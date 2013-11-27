@@ -10,11 +10,13 @@ Fhat = zeros(sz);
 Fhat(u, v) = 1;
 
 F = ifft2(Fhat);
+size(F);
 Fabsmax = max(abs(F(:)));
 
 subplot(3, 2, 1);
 showgrey(Fhat);
 title(sprintf('Fhat: (u, v) = (%d, %d)', u, v))
+
 % What is done by these instructions?
 if (u <= sz/2)
     uc = u - 1;
@@ -27,8 +29,8 @@ else
   vc = v - 1 - sz;
 end
 
-wavelength = 0.0;  % Replace by correct expression
-amplitude = 0.0;   % Replace by correct expression
+wavelength = 1/sqrt(uc*uc + vc*vc);  % Replace by correct expression
+amplitude = Fabsmax*sz*sz;   % Replace by correct expression
 
 subplot(3, 2, 2);
 showgrey(fftshift(Fhat));
