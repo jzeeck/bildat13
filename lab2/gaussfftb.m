@@ -15,8 +15,10 @@ for x = 1:xmax
 	end
 end
 
-Fhat = fft2(pic);
-Ghat = fft2(g);
+Fhat = fftshift(fft2(pic));
+% Ghat = fft2(g);
+[X,Y] = meshgrid(1:xmax,1:ymax);
+Ghat = fftshift(exp(-(X.^2 + Y.^2)*t/2));
 
 results = ifft2(Fhat.*Ghat);
 end

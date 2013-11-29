@@ -7,5 +7,7 @@ F = [zeros(60, 128); ones(8, 128); zeros(60, 128)] .* ...
 
 subplot(2,1,1)
 showgrey(F);
+axis on;
 subplot(2,1,2)
 showfs(fft2(F));
+axis on;
