@@ -10,14 +10,13 @@ if (nargin == 1)
 end
 
 [xmax, ymax] = size(pic);
-g = zeros(xmax, ymax);
- 
-for x = 1:xmax
-	for y = 1:ymax
-        g(x,y) = (1/2*pi*t) * exp(-(x*x+y*y)/(2*t));
-	end
-end
-results = conv2(pic,g);
+
+[X,Y] = meshgrid(linspace(-xmax/2,xmax/2,xmax),linspace(-ymax/2,ymax/2,ymax));
+g =  (1/2*pi*t) * exp((-X.^2 - Y.^2)/(t*2));   
+
+Fhat = fft2(pic);
+Ghat = fft2(fftshift(g));
+results = ifft2(Fhat.*Ghat);
 
 
 end

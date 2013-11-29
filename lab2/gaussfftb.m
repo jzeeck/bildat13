@@ -8,17 +8,11 @@ if (nargin == 1)
     t = 10;
 end
 [xmax, ymax] = size(pic);
-g = zeros(xmax, ymax);
-for x = 1:xmax
-	for y = 1:ymax
-        g(x,y) = (1/2*pi*t) * exp(-(x*x+y*y)/(2*t));
-	end
-end
 
-Fhat = fftshift(fft2(pic));
-% Ghat = fft2(g);
-[X,Y] = meshgrid(1:xmax,1:ymax);
-Ghat = fftshift(exp(-(X.^2 + Y.^2)*t/2));
+[X,Y] = meshgrid(linspace(-pi,pi,xmax),linspace(-pi,pi,ymax));
+Ghat = exp((-X.^2 - Y.^2)*t/2);                                        
+
+Fhat = fft2(pic);
 
 results = ifft2(Fhat.*Ghat);
 end
