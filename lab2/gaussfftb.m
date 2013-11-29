@@ -10,7 +10,8 @@ end
 [xmax, ymax] = size(pic);
 
 [X,Y] = meshgrid(linspace(-pi,pi,xmax),linspace(-pi,pi,ymax));
-Ghat = exp((-X.^2 - Y.^2)*t/2);                                        
+Ghat = exp((-X.^2 - Y.^2)*t/2);  
+
 
 Fhat = fft2(pic);
 

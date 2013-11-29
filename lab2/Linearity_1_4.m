@@ -1,6 +1,6 @@
 clc;
 clear all;
-close all;
+%close all;
 
 F = [zeros(56, 128); ones(16, 128); zeros(56, 128)];
 G = F';
