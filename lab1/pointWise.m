@@ -1,4 +1,5 @@
-load canoe256;
+ load canoe256;
+
  neg1 = - Canoe;
  figure(1);
  showgrey(neg1);
@@ -16,14 +17,15 @@ load canoe256;
  figure(6);
  hist(neg2(:));
 
+
  negtransf = (255:-1:0)';
  neg3 = compose(negtransf, Canoe + 1); 
 
-%diff = neg3 - neg2
-%figure(7);
-%image(diff);
-%figure(8);
-%hist(diff(:));
+diff = neg3 - neg2
+figure(7);
+image(diff);
+figure(8);
+hist(diff(:));
 
 % negcolormapcol = linspace(1,0,256)';
 
