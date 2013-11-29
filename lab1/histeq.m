@@ -19,7 +19,7 @@ end
 cu = cumsum(prob);
 
 ma = max(image(:));
-mi = min(image(:));
+
 
 image_buckets = image/(ma)*nacc;
 

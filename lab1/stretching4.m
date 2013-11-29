@@ -7,7 +7,7 @@ hist(n_float(:))
 %prob = no/sum(no)
 
 x = (0:0.005:1)';
-y = x.^(1/2);
+y = x.^(1/4);
 figure('name','Transformed func');
 plot (x,y);
 

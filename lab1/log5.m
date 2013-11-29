@@ -7,3 +7,5 @@ hist(n_float(:))
 tran = log(n_float + 0.03);
 figure('name','Transformed Image');
 showgray(tran)
+figure('name','Histogram After');
+hist(tran(:))
