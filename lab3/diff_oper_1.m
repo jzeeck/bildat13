@@ -10,9 +10,8 @@ showgray(tools)
 % fx = f(x +1,y)?f(x,y)
 % fy = f(x,y +1)? f(x,y)
 
-deltax = [-1 1];
-deltay = [-1;1];
-
+deltax = [-1 1;-1 1];
+deltay = [-1 -1;1 1];
 
 dxtools = conv2(tools, deltax, 'valid');
 dytools = conv2(tools, deltay, 'valid');
