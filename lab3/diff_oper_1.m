@@ -9,7 +9,6 @@ showgray(tools)
 
 % fx = f(x +1,y)?f(x,y)
 % fy = f(x,y +1)? f(x,y)
-fprintf('few256 loaded dimention is (%d,%d)\n',dimx,dimy)
 
 deltax = [-1 1];
 deltay = [-1;1];
