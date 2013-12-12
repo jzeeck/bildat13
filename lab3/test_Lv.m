@@ -72,7 +72,7 @@ figure;
 scale = [0.0001, 1.0, 4.0, 16.0, 64.0];
 for i = 1:length(scale)
     subplot(2, 3, i);
-    contour(Lvvvtilde(discgaussfft(house, scale(i)), 'same') < 0)
+    showgray(Lvvvtilde(discgaussfft(house, scale(i)), 'same') < 0)
     axis('image')
     axis('ij')
     title(['scale = ' int2str(scale(i))]);
