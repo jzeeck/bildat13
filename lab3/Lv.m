@@ -3,22 +3,26 @@ if (nargin < 2)
     shape = 'same';
 end
 
-pixels = discgaussfft(inpic, 1.2);
-
 %dxmask = [-5 5;-5 5];
 %dymask = [-5 -5;5 5];
 
-dymask = [ 1  5  1 
-      0  0  0
-     -1 -5 -1 ];
+dxmask = ...
+    [0 0    0 0   0
+     0 0    0 0   0
+     0 -0.5 0 0.5 0
+     0 0    0 0   0
+     0 0    0 0   0];
  
-dxmask = [ 1  0  -1 
-      5  0  -5
-     1 0 -1 ];
+dymask = ...
+    [0 0 0    0 0
+     0 0 -0.5 0 0
+     0 0 0    0 0
+     0 0 0.5  0 0
+     0 0 0    0 0];
  
 
-Lx  = filter2(dxmask, pixels, shape); 
-Ly  = filter2(dymask, pixels, shape);
+Lx  = filter2(dxmask, inpic, shape); 
+Ly  = filter2(dymask, inpic, shape);
 
 pixels = Lx.^2 + Ly.^2;
 

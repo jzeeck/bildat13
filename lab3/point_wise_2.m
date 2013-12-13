@@ -22,7 +22,7 @@ for i = 1:length(t)
     title(['threshold = ' int2str(t(i))]);
 end
 
-gradmagntools = Lv(tools);
+gradmagntools = Lv(discgaussfft(tools,1.0));
 figure;
 showgray(sqrt(gradmagntools));
 
@@ -30,6 +30,6 @@ figure;
 t = [8.0, 16.0, 32.0, 64.0, 128.0, 256.0];
 for i = 1:length(t)
     subplot(2, 3, i);
-    showgray((gradmagntools- t(i)^2) > 0);
-    title(['threshold = ' int2str(t(i)^2)]);
+    showgray((gradmagntools- t(i)) > 0);
+    title(['threshold = ' int2str(t(i))]);
 end

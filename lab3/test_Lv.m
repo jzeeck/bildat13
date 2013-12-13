@@ -1,5 +1,7 @@
 clc;
-[x y] =  meshgrid(-5:5, -5:5)
+close all;
+%%
+[x, y] =  meshgrid(-5:5, -5:5)
 
 dxmask = ...
     [0 0    0 0   0
@@ -10,9 +12,9 @@ dxmask = ...
  
 dymask = ...
     [0 0 0    0 0
-     0 0 0.5  0 0
-     0 0 0    0 0
      0 0 -0.5 0 0
+     0 0 0    0 0
+     0 0 0.5  0 0
      0 0 0    0 0];
  
  
@@ -37,22 +39,33 @@ dxxymask = conv2(dxxmask,dymask);
 dxxymask = dxxymask(3:7, 3:7);
 
  
-filter2(dxxxmask, x .^3, 'valid')
+answer = filter2(dxxxmask, x .^3, 'valid');
+temp = 6 *ones(7);
+answer - temp
 
-filter2(dxxmask, x .^3, 'valid')
+answer = filter2(dxxmask, x .^3, 'valid');
+temp = 6*x;
+temp = temp(3:9, 3:9);
+answer - temp
 
-filter2(dxxymask, x .^2 .* y, 'valid')
+answer = filter2(dxxymask, x .^2 .* y, 'valid');
+temp = 2*ones(7);
+answer - temp
 
-filter2(dxxxmask, y .^10, 'valid')
+answer = filter2(dxxxmask, y .^10, 'valid');
 
-filter2(dymask, y , 'valid')
+answer
+
+answer = filter2(dymask, y , 'valid');
+temp = ones(7);
+answer - temp
 
 % temp = x .^3
 
 % temp = x .^2 .*y
 
 % temp = x .^2 .*y
-
+%%
 house = godthem256;
 
 figure;
