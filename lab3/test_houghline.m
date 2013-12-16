@@ -4,9 +4,9 @@ clc;
 % curves = [50 1 50 45
 %           1 50 25 45];
 % magnitude = 4711;
-nrho = 300;
-ntheta = 80;
-threshold = 0.01;
+nrho = 100;
+ntheta = 30;
+threshold = 0.1;
 nlines = 4;
 verbose = 0;
 % 

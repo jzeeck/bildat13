@@ -51,6 +51,13 @@ end
 if verbose>0
 acc
 end
+for i = 1:size(acc,1)
+    for j = 1:size(acc,2)
+     if acc(i,j) < threshold
+         acc(i,j) = 0;
+     end
+    end 
+end
 
 % Extract local maxima from the accumulator
 [pos, value, ~] = locmax8(acc);
@@ -81,15 +88,20 @@ for idx = 1:indexMax
     dy = sin(theta(thetaidxacc));
     dx = -cos(theta(thetaidxacc));
     
+    if abs(dy) < abs(dx)
+        x0 = dimy/2;
+        y0 = (rho(rhoidxacc)- x0 * sin(theta(thetaidxacc))) / cos(theta(thetaidxacc));
+    end
+    
     outcurves(1, 4*(idx-1) + 1) = 0;
     outcurves(2, 4*(idx-1) + 1) = 3;
-    outcurves(2, 4*(idx-1) + 2) = x0-(dx*2*dim);
-    outcurves(1, 4*(idx-1) + 2) = y0-(dy*2*dim);
+    outcurves(2, 4*(idx-1) + 2) = x0-(dx*dim);
+    outcurves(1, 4*(idx-1) + 2) = y0-(dy*dim);
     outcurves(2, 4*(idx-1) + 3) = x0;
     outcurves(1, 4*(idx-1) + 3) = y0;
 
-    outcurves(2, 4*(idx-1) + 4) = x0+(dx*2*dim);
-    outcurves(1, 4*(idx-1) + 4) = y0+(dy*2*dim);
+    outcurves(2, 4*(idx-1) + 4) = x0+(dx*dim);
+    outcurves(1, 4*(idx-1) + 4) = y0+(dy*dim);
 end
 if verbose >0
 outcurves
