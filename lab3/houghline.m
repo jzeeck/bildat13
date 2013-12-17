@@ -45,7 +45,8 @@ for i = 1:m
           % Compute index values in the accumulator space
           rhoindex = findRhoIndex(rhotemp,rho);
           % Update the accumulator
-          acc(j, rhoindex) = acc(j, rhoindex) + magnitude(uint32(curves(2,i)),uint32(curves(1,i))); 
+          acc(j, rhoindex) = acc(j, rhoindex) + ...
+              abs(magnitude(uint32(curves(2,i)),uint32(curves(1,i))))^(1/3); 
       end
 end
 if verbose>0
@@ -92,6 +93,9 @@ for idx = 1:indexMax
         x0 = dimy/2;
         y0 = (rho(rhoidxacc)- x0 * sin(theta(thetaidxacc))) / cos(theta(thetaidxacc));
     end
+    hold on
+    plot(x0,y0,'r+')
+    hold off
     
     outcurves(1, 4*(idx-1) + 1) = 0;
     outcurves(2, 4*(idx-1) + 1) = 3;
