@@ -59,6 +59,7 @@ for i = 1:size(acc,1)
      end
     end 
 end
+showgray(acc)
 
 % Extract local maxima from the accumulator
 [pos, value, ~] = locmax8(acc);
